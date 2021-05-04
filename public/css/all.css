@@ -138,6 +138,18 @@ h1 {
 }
 
 
+/*------ Forms Section ------*/
+/*===== Create Character =====*/
+.create_character {
+  padding: 60px 0;
+}
+
+/*===== Show all chracters =====*/
+.characters {
+  padding: 100px 0;
+}
+
+
 /*============= FOOTER =============*/
 footer{
   background-image: linear-gradient(to right, #54a7ff, #5331ff);

@@ -1,0 +1,54 @@
+<div class="create_character">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <form action="/character/new" method="post">
+                    <h1 class="text-center title">Create A character</h1>
+                        <legend>Add a character</legend>
+                        <!-- Book -->
+                         <div class="form-group">
+                            <label for="character-book">Book Apperance</label>
+                            <input type="text" name="book" class="form-control" id="character-book" placeholder="Book Appearance">
+                        </div>
+
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="character-name">Name</label>
+                            <input type="text" name="name" class="form-control" id="character-name" placeholder="Name">
+                        </div>
+
+                        <!-- Age -->
+                        <div class="form-group">
+                            <label for="character-age">Age</label>
+                            <input type="text" name="age" class="form-control" id="character-age" placeholder="Age(number)">
+                        </div>
+
+                        <!-- Species -->
+                         <div class="form-group">
+                            <label for="character-species">Species</label>
+                            <input type="text" name="species" class="form-control" id="character-species" placeholder="Species">
+                        </div>
+
+                        <!-- Powers -->
+                        <div class="form-group">
+                            <label for="character-powers">Powers</label>
+                            <input type="text" name="powers" class="form-control" id="character-powers" placeholder="Powers">
+                        </div>
+
+                        <!-- Summary -->
+                        <div class="form-group">
+                            <label for="character-summary">Summary</label>
+                            <textarea name="summary" class="form-control" id="character-summary" placeholder="Summary"></textarea>
+                        </div>
+                        
+                        <!-- Submit -->
+                        <div class='text-right'>
+                            <button type="submit" class="btn btn-primary">Create Character</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
