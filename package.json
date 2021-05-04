@@ -4,15 +4,22 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Sreenvitha <sree.chikati@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.0"
+    "express-handlebars": "^5.3.0",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.12.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.3.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sree-chikati/custom-api.git"
