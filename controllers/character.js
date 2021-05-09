@@ -1,3 +1,4 @@
+const character = require('../models/character');
 const Character = require('../models/character');
 
 module.exports = app => {
@@ -31,6 +32,7 @@ module.exports = app => {
           })
     });
 
+    // FIND CHARACTER WITH IDÅ
     app.get("/characters/:id", function(req, res) {
         // LOOK UP THE POST
         Character.findById(req.params.id).lean()
@@ -40,5 +42,16 @@ module.exports = app => {
           .catch(err => {
             console.log(err.message);
           });
+    });
+
+    // DISPLAY CHARACTERS WITH SAME BOOK
+    app.get("/book/:book", function(req, res) {
+      Character.find({ book: req.params.book }).lean()
+        .then(characters => {
+          res.render("character-index", { characters });
+        })
+        .catch(err => {
+          console.log(err.message);
+        });
     });
   };
