@@ -1,13 +1,19 @@
-const app = require("./../server");
+//test/posts.js
 const chai = require("chai");
 const chaiHttp = require("chai-http");
+const server = require("../server");
 const expect = chai.expect;
-
-const Character = require('../models/character');
-const server = require('../server');
-
-chai.should();
+const should = chai.should();
 chai.use(chaiHttp);
+
+// Agent that will keep track of our cookies
+const agent = chai.request.agent(server);
+
+
+// CODE STARTS HERE
+const Character = require('../models/character');
+const User = require("../models/user");
+
 
 describe('Characters', function() {
   const agent = chai.request.agent(server);
@@ -21,12 +27,30 @@ describe('Characters', function() {
         summary: 'Character that does not exist in the book'
     };
 
+    const user = {
+        username: 'usertest',
+        password: 'passtest'
+    }
+
+    before(function (done) {
+        agent
+        .post('/sign-up')
+        .set("content-type", "application/x-www-form-urlencoded")
+        .send(user)
+        .then(function(res) {
+            done();
+        })
+        .catch(function(err) {
+            done(err);
+        });
+    });
+
     it('Should create character valid attributes at POST /character/new', function(done) {
         Character.estimatedDocumentCount()
         .then(function (initialDocCount) {
             agent
             .post("/character/new")
-            //This line fakes a form character, since we're not actually filing out a form
+            //forms character
             .set("content-type", "application/x-www-form-urlencoded")
             //make a request to create another
             .send(newCharacter)
@@ -51,8 +75,24 @@ describe('Characters', function() {
     });
 
     // Will remove character after test is done
-    after(function () {
-        Character.findOneAndDelete(newCharacter);
-      });
+    after(function (done) {
+        Character.findOneAndDelete(newCharacter)
+        .then(function (res) {
+            agent.close()
+      
+            User.findOneAndDelete({
+                username: user.username
+            })
+              .then(function (res) {
+                  done()
+              })
+              .catch(function (err) {
+                  done(err);
+              });
+        })
+        .catch(function (err) {
+            done(err);
+        });
+    });
     
 });
