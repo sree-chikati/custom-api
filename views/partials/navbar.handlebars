@@ -1,23 +1,24 @@
 <ul class="navbar-nav ml-auto">
-
-     <!-- Home Route -->
-    <li class="nav-item">
-        <a href="/">
-            Home
-        </a>
-    </li>
     <!-- View Character Route -->
     <li class="nav-item">
         <a href="/characters">
             Characters
         </a>
     </li>
+    {{#if currentUser}}
     <!-- Add Character Route -->
     <li class="nav-item">
         <a href="/character/new">
             Add Character
         </a>
     </li>
+    <!-- Add Character Route -->
+    <li class="nav-item">
+        <a href="/logout">
+            Logout
+        </a>
+    </li>
+    {{else}}
     <!-- Login Route -->
     <li class="nav-item">
         <a href="/login">
@@ -30,5 +31,5 @@
             Sign Up
         </a>
     </li>
-
+    {{/if}}
 </ul>
